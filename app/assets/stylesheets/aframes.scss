@@ -69,7 +69,8 @@ html {
   }
   
   .visbox {
-    height: 50%;
+    height: 100%;
+    border: 1px solid #aaa;
   }
   
   .vis-loader {
@@ -102,9 +103,8 @@ html {
   }
   
   #d2 {
-    width: 690px;
-    padding-top: 25px;
-    height: 100%;
+    width: 63%;
+    height: 95%;
   }
   
   .node {

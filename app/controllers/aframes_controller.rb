@@ -7,6 +7,15 @@ class AframesController < ApplicationController
     @namespace = { action: params[:action], controller: params[:controller], id: params[:id] }
   end
 
+  def random
+    progs = Dir["#{Rails.root}/lib/demojs/*.js"]
+    prog = progs[rand(progs.length)]
+    f = File.read(prog)
+    respond_to do |format|
+      format.json { render json: {prog: f} }
+    end
+  end
+
   # GET /aframes
   # GET /aframes.json
   def index

@@ -6,9 +6,31 @@ $ ->
   # how to do this better?
   window["aframe"] = {}
 
+  $("#run").click((e)->
+    e.preventDefault()
+    $("a-scene").empty()
+    editor = ace.edit("snapshot-area")
+    snap = editor.getValue()
+    eval(snap)
+  )
+
+  $("#random").click((e)->
+    e.preventDefault()
+    $.ajax
+      dataType: 'text'
+      url: '/aframes/random'
+      type: 'POST'
+      success: (res) ->
+        f = JSON.parse(res)
+        editor = ace.edit("snapshot-area")
+        snap = editor.setValue(f["prog"])
+      error: (res) -> window.location = "/"
+  )
+
   if namespace.controller is "aframes" and namespace.action is "new"
     editor = ace.edit('snapshot-area')
-    editor.setTheme 'ace/theme/monokai'
+    editor.renderer.setShowGutter(false)
+    editor.setTheme 'ace/theme/xcode'
     editor.session.setMode("ace/mode/javascript")
     editor.setOptions fontSize: '16pt'
     editor.resize()
