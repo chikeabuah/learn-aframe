@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aframes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Jscode</th>
+      <th>Htmlcode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aframes.each do |aframe| %>
+      <tr>
+        <td><%= aframe.jscode %></td>
+        <td><%= aframe.htmlcode %></td>
+        <td><%= link_to 'Show', aframe %></td>
+        <td><%= link_to 'Edit', edit_aframe_path(aframe) %></td>
+        <td><%= link_to 'Destroy', aframe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aframe', new_aframe_path %>
