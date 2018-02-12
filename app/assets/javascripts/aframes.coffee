@@ -8,7 +8,7 @@ $ ->
 
   $("#run").click((e)->
     e.preventDefault()
-    $("a-scene").empty()
+    # $("a-scene").empty()
     editor = ace.edit("snapshot-area")
     snap = editor.getValue()
     eval(snap)
