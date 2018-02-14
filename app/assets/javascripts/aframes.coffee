@@ -15,8 +15,8 @@ $ ->
 
   $("#clear").click((e)->
     e.preventDefault()
-    $("#d3").empty()
-    $("#d3").append("<a-scene></a-scene>")
+    $("#scene").empty()
+    $("#scene").append("<a-scene></a-scene>")
   )
 
   $("#random").click((e)->
