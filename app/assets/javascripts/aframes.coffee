@@ -8,10 +8,15 @@ $ ->
 
   $("#run").click((e)->
     e.preventDefault()
-    # $("a-scene").empty()
     editor = ace.edit("snapshot-area")
     snap = editor.getValue()
     eval(snap)
+  )
+
+  $("#clear").click((e)->
+    e.preventDefault()
+    $("#d3").empty()
+    $("#d3").append("<a-scene></a-scene>")
   )
 
   $("#random").click((e)->
