@@ -13,70 +13,16 @@
       window.namespace = <%= raw @namespace.to_json %>
       window.env = '<%= Rails.env %>'
     <% end %>
- 		
-<script type="text/javascript" src="http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject.js"></script>
-<script type="text/javascript">
-<!--
-function GetUnity() {
-	if (typeof unityObject != "undefined") {
-		return unityObject.getObjectById("unityPlayer");
-	}
-	return null;
-}
-if (typeof unityObject != "undefined") {
-	unityObject.embedUnity("unityPlayer", "banger.unity3d", 480, 320);
-	
-}
--->
-</script>
-<style type="text/css">
-<!--
-body {
-	font-family: Helvetica, Verdana, Arial, sans-serif;
-	background-color: white;
-	color: black;
-	text-align: center;
-}
-a:link, a:visited {
-	color: #000;
-}
-a:active, a:hover {
-	color: #666;
-}
-p.header {
-	font-size: small;
-}
-p.header span {
-	font-weight: bold;
-}
-p.footer {
-	font-size: x-small;
-}
-div.content {
-	margin: auto;
-	width: 480px;
-}
-div.missing {
-	margin: auto;
-	position: relative;
-	top: 50%;
-	width: 193px;
-}
-div.missing a {
-	height: 63px;
-	position: relative;
-	top: -31px;
-}
-div.missing img {
-	border-width: 0px;
-}
-div#unityPlayer {
-	cursor: default;
-	height: 320px;
-	width: 480px;
-}
--->
-</style>
+     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | PuppetTest</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/banger.json", {onProgress: UnityProgress});
+    </script>
     </head>
 
   <body>

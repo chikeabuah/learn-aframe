@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "banger.data.unityweb",
+"asmCodeUrl": "banger.asm.code.unityweb",
+"asmMemoryUrl": "banger.asm.memory.unityweb",
+"asmFrameworkUrl": "banger.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
