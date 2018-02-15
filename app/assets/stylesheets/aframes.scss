@@ -10,10 +10,12 @@ html {
     font-family: 'Ubuntu', serif !important;
     font-size: 14px !important;
     margin: 10px !important;
+    overflow-y: scroll;
   }
   
   #main {
     height:100vh;
+    overflow-y: scroll;
   }
   
   .btn {
