@@ -14,8 +14,31 @@ html {
   }
   
   #main {
-    height:100vh;
+    height:96vh;
     overflow-y: scroll;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+
+  }
+  
+  #d1 {
+    height: 95%;
+    flex-grow: 0;
+  }
+  #d2 {
+    flex-grow: 1;
+    height: 95%;
+    overflow: hidden;
+  }
+  @media only screen and (max-width: 750px) {
+    #d1 {
+      width: 100%;
+    }
+   #d2 {
+      width: 100%;
+   }
   }
   
   .btn {
@@ -66,11 +89,6 @@ html {
     color: white;
   }
   
-  #d1 {
-    height: 95%;
-    width: 34%;
-  }
-  
   .visbox {
     height: 100%;
     border: 1px solid #aaa;
@@ -105,10 +123,7 @@ html {
     100% { transform: rotate(360deg); }
   }
   
-  #d2 {
-    width: 63%;
-    height: 95%;
-  }
+
   
   .node {
       cursor: pointer;
@@ -177,7 +192,6 @@ html {
   }
   
   #main > div{
-    float:left;
     margin:10px;
   }
   
@@ -241,16 +255,3 @@ html {
       -webkit-transform: scale(1);
       transform: scale(1);
   }
-
-  @media only screen and (max-width: 500px) {
-    #d1 {
-      width: 100%
-    }
-   #d2 {
-     float: none;
-     width: 100%;
-   }
-   .mobile-shim {
-     margin-top: 3em !important;
-   }
-}
