@@ -9,17 +9,14 @@ html {
     min-height: 100%;
     font-family: 'Ubuntu', serif !important;
     font-size: 14px !important;
-    margin: 10px !important;
     overflow-y: scroll;
   }
   
   #main {
     height:96vh;
     overflow-y: scroll;
-    padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    padding: 10px;
 
   }
   
@@ -31,6 +28,7 @@ html {
     flex-grow: 1;
     height: 95%;
     overflow: hidden;
+    border: 1px solid #aaa;
   }
   @media only screen and (max-width: 750px) {
     #d1 {
@@ -91,7 +89,6 @@ html {
   
   .visbox {
     height: 100%;
-    border: 1px solid #aaa;
   }
   
   .vis-loader {
@@ -192,12 +189,13 @@ html {
   }
   
   #main > div{
-    margin:10px;
+    margin:15px;
   }
   
-  #code-buttons > div {
+  #code-buttons {
     float:left;
     margin:10px;
+    display: flex;
   }
   
   .callradio > p {
@@ -254,4 +252,8 @@ html {
       opacity: 1;
       -webkit-transform: scale(1);
       transform: scale(1);
+  }
+
+  .a-enter-vr {
+    bottom: 25px !important;
   }
