@@ -63,6 +63,17 @@ $ ->
       sceneEl.appendChild boxEl
       return boxEl
 
+    animate = (el) ->
+      animEl = document.createElement('a-animation')
+      animEl.setAttribute 'attribute', 'rotation'
+      animEl.setAttribute 'dur', '10000'
+      animEl.setAttribute 'fill', 'forwards'
+      animEl.setAttribute 'to', '0 360 0'
+      animEl.setAttribute 'repeat', 'indefinite'
+      el.appendChild animEl
+      
+
+
     exec: (snap) =>
       eval(snap)
 
