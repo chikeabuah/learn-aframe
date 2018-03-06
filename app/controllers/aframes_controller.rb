@@ -1,4 +1,5 @@
 class AframesController < ApplicationController
+  protect_from_forgery with: :null_session
   before_action :set_aframe, only: [:show, :edit, :update, :destroy]
 
   before_action :set_vars

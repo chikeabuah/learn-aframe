@@ -3,10 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  # how to do this better?
-  window["myr"] = {}
+  class Myr 
+    constructor: () ->
 
-  myr.env = (snap) ->
     random = ->
       Math.random()
 
@@ -40,16 +39,29 @@ $ ->
       sceneEl.appendChild boxEl
       return boxEl
 
-    exec = (snap) ->
-      eval(snap)
+    position = {
+      x: random() * 20,
+      y: random() * 20,
+      z: random() * 20
+    }
 
-    exec(snap)
+    # evalInContext = (js, context) ->
+    #   (->
+    #     eval js
+    #   ).call context
+
+    @exec: (snap) ->
+      (->
+        debugger
+        eval(snap)
+      ).call()
+
 
   $("#run").click((e)->
     e.preventDefault()
     editor = ace.edit("snapshot-area")
     snap = editor.getValue()
-    myr.env(snap)
+    Myr.exec(snap)
   )
 
   $("#clear").click((e)->
@@ -78,6 +90,9 @@ $ ->
     editor.session.setMode("ace/mode/javascript")
     editor.setOptions fontSize: '16pt'
     editor.resize()
+    $('#d1').resizable resize: (event, ui) ->
+      editor.resize()
+      return
     editor.on 'guttermousedown', (e) ->
       target = e.domEvent.target
       if target.className.indexOf('ace_gutter-cell') == -1
