@@ -3,8 +3,21 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  window["myr"] = {}
+  myr.position =
+    x: Math.random() * 20 - 10
+    y: Math.random() * 20 - 10
+    z: Math.random() * 20 - 10
+  myr.scale =
+    x: Math.random()/2
+    y: Math.random()/2
+    z: Math.random()/2
+  myr.rotation =
+    x: 0,
+    y: 0,
+    z: 0
+
   class Myr 
-    constructor: () ->
 
     random = ->
       Math.random()
@@ -22,46 +35,44 @@ $ ->
       $("#scene").empty()
       $("#scene").append("<a-scene></a-scene>")
       window.sceneEl = document.querySelector('a-scene')
+
+    moveTo = (x,y,z) ->
+      myr.position =
+        x: x,
+        y: y,
+        z: z
+
+    scale = (x,y,z) ->
+      myr.scale =
+        x: x,
+        y: y,
+        z: z
+
+    rotation = (x,y,z) ->
+      myr.rotation =
+        x: x,
+        y: y,
+        z: z
       
     box = (x,y,z) ->
       boxEl = document.createElement('a-box')
       boxEl.setAttribute 'material', color: getRandomColor()
-      position = 
-        x: random() * 20 - 10
-        y: random() * 20 - 10
-        z: random() * 20 - 10
-      boxEl.setAttribute 'position', position
-      scale = 
-        x: x
-        y: y
-        z: z
-      boxEl.setAttribute 'scale', scale
+      boxEl.setAttribute 'position', myr.position
+      boxEl.setAttribute 'scale', myr.scale
+      boxEl.setAttribute 'rotation', myr.rotation      
       sceneEl.appendChild boxEl
       return boxEl
 
-    position = {
-      x: random() * 20,
-      y: random() * 20,
-      z: random() * 20
-    }
-
-    # evalInContext = (js, context) ->
-    #   (->
-    #     eval js
-    #   ).call context
-
-    @exec: (snap) ->
-      (->
-        debugger
-        eval(snap)
-      ).call()
+    exec: (snap) =>
+      eval(snap)
 
 
   $("#run").click((e)->
     e.preventDefault()
     editor = ace.edit("snapshot-area")
     snap = editor.getValue()
-    Myr.exec(snap)
+    myr = new Myr
+    myr.exec(snap)
   )
 
   $("#clear").click((e)->
