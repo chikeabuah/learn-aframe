@@ -4,13 +4,52 @@
 
 $ ->
   # how to do this better?
-  window["aframe"] = {}
+  window["myr"] = {}
+
+  myr.env = (snap) ->
+    random = ->
+      Math.random()
+
+    getRandomColor = ->
+      letters = '0123456789ABCDEF'
+      color = '#'
+      i = 0
+      while i < 6
+        color += letters[Math.floor(Math.random() * 16)]
+        i++
+      color
+
+    initScene = () ->
+      $("#scene").empty()
+      $("#scene").append("<a-scene></a-scene>")
+      window.sceneEl = document.querySelector('a-scene')
+      
+    box = (x,y,z) ->
+      boxEl = document.createElement('a-box')
+      boxEl.setAttribute 'material', color: getRandomColor()
+      position = 
+        x: random() * 20 - 10
+        y: random() * 20 - 10
+        z: random() * 20 - 10
+      boxEl.setAttribute 'position', position
+      scale = 
+        x: x
+        y: y
+        z: z
+      boxEl.setAttribute 'scale', scale
+      sceneEl.appendChild boxEl
+      return boxEl
+
+    exec = (snap) ->
+      eval(snap)
+
+    exec(snap)
 
   $("#run").click((e)->
     e.preventDefault()
     editor = ace.edit("snapshot-area")
     snap = editor.getValue()
-    eval(snap)
+    myr.env(snap)
   )
 
   $("#clear").click((e)->
